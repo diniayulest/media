@@ -13,19 +13,18 @@
     <meta property="og:description" content="Just because you're at work doesn't mean you're getting work done. See how excessive email, meetings, and interruptions are limiting your productivity.">
     <link rel="stylesheet" href="./font.css">
     <link rel="stylesheet" href="./style.css">
-    <style>
-        .kebutuhan-wrapper {
-            position: relative;
-            z-index: 200;
-            padding: 85px 0 15px;
-        }
-
-        .introText ul {
-            padding: 15px 50px;
-        }
-    </style>
+    <link rel="stylesheet" href="./custom.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
     <!--[if lt IE 9]> <script src="/docroot/wac/resources/wac/js/landing/time-wasters/html5shiv.js"></script> <![endif]-->
+    <link rel="stylesheet" type="text/css" href="./mp3-player-button.css" />
+    <script type="text/javascript" src="./soundmanager2.js"></script>
+    <script type="text/javascript" src="./mp3-player-button.js"></script>
+    <script>
+    soundManager.setup({
+      // required: path to directory containing SM2 SWF files
+      url: './swf/'
+    });
+    </script>
     <script>
         (function($) {
             function incrementer(ct, increment) {
@@ -243,27 +242,42 @@
 <body id="waste-time">
     <section id="intro">
         <div class="container">
-            <h1>kebutuhan<span class="pink">manusia</span> <span class="black">dan</span> <span class="cyan">faktor</span> <span class="black1">yang</span> <span class="yellow">mempengaruhi</span></h1>
-            <p class="introText">Pada dasarnya setiap manusia mempunyai kebutuhan. Kebutuhan ini tidak terbatas dan beragam jumlahnya, sehingga tidak mungkin manusia dapat memenuhi semua kebutuhannya. Begitu kebutuhan satu dipenuhi, akan muncul kebutuhan yang lain. Apabila
-                kebutuhan sekolah kalian seperti kebutuhan seragam, sepatu, tas, uang sekolah, les privat, telah terpenuhi; kebutuhan yang lain akan muncul. Misalnya, bermain musik, rekreasi, nonton film, dan lain-lain. Upaya untuk memenuhi kebutuhan
-                pada dasarnya tidak pernah berakhir, karena itu manusia perlu bertindak rasional artinya berbuat sesuatu untuk mencegah pemborosan dan mencegah ketidakefisienan.</p>
+            <h1>permintaan,<span class="pink">penawaran</span> <span class="black">dan</span> <span class="cyan">harga</span> <span class="black1">keseimbangan</span> <span class="yellow">pasar</span></h1>
         </div>
     </section>
     <!-- /#intro -->
-    <div class="border-boundary clear"></div>
-    <section id="first-interactive" data-type="background">
+    <section id="second-interactive" data-type="background" class="kompetensi">
         <div class="container">
-            <div class="clear"></div>
-            <div class="kebutuhan-wrapper">
-                <div class="introText">Kebutuhan adalah keinginan manusia terhadap benda atau jasa yang dapat memberikan kepuasan jasmani maupun kebutuhan rohani. Kebutuhan manusia tidak terbatas pada kebutuhan yang bersifat konkret (nyata) tetapi juga bersifat abstrak (tidak
-                    nyata). Misalnya rasa aman, ingin dihargai, atau dihormati,maka kebutuhan manusia bersifat tidak terbatas. Beberapa faktor yang menyebabkan kebutuhan manusia itu tidak terbatas antara lain sebagai berikut:
+            <div class="container">
+                <div class="excessive-email">
+                    <h2>Standar kompetensi</h2>
+                    <p>Memahami konsep ekonomi dalam kaitannya dengan permintaan, penawaran dan harga keseimbangan </p>
+                </div>
+                <div class="excessive-meetings">
+                    <h2>Kompetensi dasar</h2>
                     <ul>
-                        <li>Makin bertambahnya jumlah penduduk.</li>
-                        <li>Makin maju ilmu pengetahuan dan teknologi.</li>
-                        <li>Makin meluaskan lingkungan perguruan.</li>
-                        <li>Meningkatkan tingkat kebudayaan manusia.</li>
+                      <li>Mengidentifikasi faktor-faktor yang mempengaruhi permintaan dan penawaran</li>
+                      <li>Menjelaskan hukum permintaan dan penawaran serta asumsi yang mendasarinya</li>
+                      <li>Mendeskripsikan harga dan keseimbangan pasar</li>
                     </ul>
                 </div>
+                <div class="excessive-interruptions">
+                    <h2>Indikator</h2>
+                    <ul>
+                      <li>Mendeskripsikan pengertian permintaan dan penawaran
+                      <li>Mendeskripsikan faktor-faktor yang mempengaruhi permintaan dan penawaran</li>
+                      <li>Mendeskripsikan hukum permintaan dan penawaran serta asumsi-asumsinya</li>
+                      <li>Mendeskripsikan proses terbentuknya harga dan output dalam keadaan keseimbangan</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="first-interactive" data-type="background" class="video-g">
+        <div class="container">
+            <div class="clear"></div>
+            <div class="kebutuhan-video">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/yOiVoWxFYwc" frameborder="0" allowfullscreen></iframe>
             </div>
             <div class="container-2">
                 <div class="mover" data-type="sprite" data-offsety="-700px" data-xposition="765px" data-speed="-2.2" style="background-position: 765px 21.3636px;"></div>
@@ -282,94 +296,138 @@
     <div class="border-boundary-up clear"></div>
     <section id="big-head">
         <div class="container">
-            <div class="introText">Dalam pemenuhan kebutuhan manusia yang tidak terbatas dapat dilakukan dengan cara sebagai berikut :
-                <ul>
-                    <li>Berusaha secara individu atau kelompok dalam masyarakat atau lingkungannya</li>
-                    <li>Pemenuhan kebutuhan tidak sekaligus, tetapi harus menerapkan skala prioritas yaitu mengutamakan kebutuhan mana yang harus didahulukan.</li>
-                </ul> Mengapa kebutuhan itu selalu muncul? Kebutuhan itu akan selalu ada selama manusia hidup. Selain itu, hal ini dikarenakan sifat manusia yang merasa tidak pernah puas, sehingga kebutuhannya tidak terbatas. Kebutuhan tersebut akan bertambah
-                terus, baik macam, jumlah, dan mutunya. </div>
+            <div class="introText">
+              Teori penawaran dan permintaan (bahasa Inggris: supply and demand) dalam ilmu ekonomi, adalah penggambaran atas hubungan-hubungan di pasar, antara para calon pembeli dan penjual dari suatu barang. Model penawaran dan permintaan digunakan untuk menentukan harga dan kuantitas yang terjual di pasar. Model ini sangat penting untuk melakukan analisis ekonomi mikro terhadap perilaku serta interaksi para pembeli dan penjual. Ia juga digunakan sebagai titik tolak bagi berbagai model dan teori ekonomi lainnya. Model ini memperkirakan bahwa dalam suatu pasar yang kompetitif, harga akan berfungsi sebagai penyeimbang antara kuantitas yang diminta oleh konsumen dan kuantitas yang ditawarkan oleh produsen, sehingga terciptalah keseimbangan ekonomi antara harga dan kuantitas. Model ini mengakomodasi kemungkian adanya faktor-faktor yang dapat mengubah keseimbangan, yang kemudian akan ditampilkan dalam bentuk  terjadinya pergeseran dari permintaan atau penawaran.
+            </div>
         </div>
     </section>
     <!-- /#big-head -->
-    <section id="second-interactive" data-type="background">
+    <section id="fifth-interactive" data-type="background" class="pengertian">
         <div class="container">
-            <h2>Kebutuhan menurut tingkat intensitasnya</h2>
+            <h2>Pengertian Permintaan dan Penawaran </h2> </div>
+        <div class="container">
+            <ul>
+              <li>Permintaan adalah jumlah barang atau jasa yang ingin dan mampu dibeli oleh konsumen, pada berbagai tingkat harga, dan pada periode tertentu. </li>
+              <li>Penawaran adalah jumlah barang dan jasa yang tersedia dan dapat dijual oleh penjual.</li>
+            </ul>
+        </div>
+    </section>
+    <section id="second-interactive" data-type="background" class="jenis-permintaan">
+        <div class="container">
+            <h2>Jenis-jenis Permintaan dan Penawaran</h2>
             <div class="container">
                 <div class="excessive-email">
-                    <h2>Kebutuhan primer</h2>
-                    <p>Kebutuhan yang harus dipenuhi agar manusia dapat mempertahankan hidupnya. Supaya dapat hidup manusia harus makan, minum, dan berpakaian. Selain itu manusia juga memerlukan tempat tinggal atau rumah. Kebutuhan primer juga disebut sebagai
-                        kebutuhan alamiah. </p>
+                    <h2>Jenis-jenis Permintaan</h2>
+                    <ul>
+                      <li>Berdasarkan Daya Beli: Efektif, Potensial dan Absolut</li>
+                      <li>Berdasarkan jumlah yang melakukan permintaan: Individu dan kelompok</li>
+                    </ul>
                 </div>
                 <div class="excessive-meetings">
-                    <h2>Kebutuhan sekunder</h2>
-                    <p>Is your workday packed with unproductive meetings? Time spent together is not always time spent getting work done.</p>
+                    <h2>Jenis-jenis Penawaran</h2>
+                    <ul>
+                      <li>Penawaran Individu</li>
+                      <li>Penawaran Pasar</li>
+                    </ul>
                 </div>
-                <div class="excessive-interruptions">
-                    <h2>Kebutuhan tersier</h2>
-                    <p>kebutuhan yang terjadi setelah kebutuhan primer dan sekunder terpenuhi. Ia masih memerlukan hal-hal lain yang tingkatannya lebih tinggi. Namun kebutuhan sekunder cenderung ke arah barang prestise di dalammasyarakat, missal : berlian,
-                        mobil mewah, dan rumah megah. </p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section id="fifth-interactive" data-type="background">
-        <div class="container">
-            <h2>Kebutuhan menurut sifatnya</h2> </div>
-        <div class="container">
-            <div class="excessive-email">
-                <h2>Kebutuhan jasmani</h2>
-                <p>kebutuhan yang berhubungan dengan jasmani. Misal : makanan, minuman, pakaian, dan olahraga </p>
-            </div>
-            <div class="excessive-meetings">
-                <h2>Kebutuhan rohani</h2>
-                <p>kebutuhan yang merupakan upaya manusia untuk memenuhi kepuasan jiwa atau rohani seseorang. Misal : rekreasi, mendengarkan musik, dan ibadah. </p>
-            </div>
-        </div>
-    </section>
-    <section id="second-interactive" data-type="background">
-        <div class="container">
-            <h2>Kebutuhan menurut subjeknya</h2>
-            <div class="container">
-                <div class="excessive-email">
-                    <h2>Kebutuhan individu</h2>
-                    <p>Kebutuhan yang dirasakan oleh seseorang dan pemenuhannya dapat dilakukan secara individu. Misalnya petani membutuhkan cangkul, siswa membutuhkan buku tulis dan pensil. </p>
-                </div>
-                <div class="excessive-meetings">
-                    <h2>Kebutuhan kelompok atau kolektif</h2>
-                    <p>kebutuhan yang diraskan oleh kelompok orang secara bersamaan dan pemenuhannya dapat dilakukan secara bersama-sama, misal : jalan, rumah sakit, dan tempat rekreasi. </p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <div class="border-boundary clear"></div>
-    <section id="fifth-interactive" data-type="background">
-        <div class="container">
-            <h2>Kebutuhan menurut waktu</h2> </div>
-        <div class="container">
-            <div class="excessive-email">
-                <h2>Kebutuhan sekarang</h2>
-                <p>kebutuhan mendesak yang harus dipenuhi saat ini dan tidak boleh ditunda-tunda, misalnya obat bagi orang sakit, makan bagi orang lapar. </p>
-            </div>
-            <div class="excessive-meetings">
-                <h2>Kebutuhan yang akan datang</h2>
-                <p>kebutuhan yang sifatnya tidak terdesak dan dapat ditunda sampai dengan waktu yang telah ditentukan. Kebutuhan ini berhubungan dengan persediaan atau persiapan untuk waktu yang akan datang. Misalnya orang tua menabung untuk persiapan sekolah
-                    anaknya dan asuransi </p>
             </div>
         </div>
     </section>
     <section id="sound-familiar">
         <div class="container">
-            <h1>Faktor-faktor yang mempengaruhi kebutuhan</h1>
+            <h1>Faktor-faktor yang mempengaruhi permintaan dan penawaran</h1>
+            <h3>Faktor yang mempengaruhi permintaan</h3>
             <p>Ada beberapa hal yang menyebabkan kebutuhan manusia antara satu dengan yang lain berbeda-beda, di antaranya sebagian berikut :</p>
             <ul>
-                <li> <strong>Peradaban</strong><br> Peradaban adalah satu faktor yang membuat kubutuhan tiap zaman berbeda. Kebutuhan manusia pada zaman dahulu hanya tertuju pada kebutuhan primer, misal nenek moyang berpakaian memakai kulit kayu dan daun-daunan,
-                    makan pun cukup ubi-ubian. Seiring perkembangan peradaban semakin berkembang pula jenis kebutuhan, manusia membutuhkan makanan lain yang bervariasi dan pakaian terbuat dari bahan yang bagus. </li>
-                <li> <strong>Lingkungan</strong><br> Lingkungan termasuk salah satu faktor yang mempengaruhi kebutuhan manusia. Kebutuhan masyarakat yang mendiami sebuah pesisir berbeda dengan masyarakat yang mendiami pegunungan, penduduk pesisir membutuhkan
-                    jarring, perahu, dan pancing agar dapat menangkap ikan di laut. Sedangkan penduduk pegunungan lebih membutuhkan cangkul, benih tanaman, dan pupuk untuk bercocok tanam. </li>
-                <li> <strong>Agama</strong><br> Agama termasuk salah satu faktor yang membuat kebutuhan setiap individu berbeda, misalnya penganut agama Islam membutuhkan sajadah untuk salat dan dilarang mengonsumsi daging babi, sedang penganut agama Hindu
-                    membutuhkan sesajen dalam upacara keagamaan dan dilarang mengonsumsi daging sapi. </li>
-                <li> <strong>Adat Istiadat</strong><br> Adat istiadat juga mempengaruhi perbedaan kebutuhan setiap individu/kelompok. Pria Jawa memiliki tradisi untuk menggunakan blangkon, sedangkan pria di daerah lain tidak. </li>
+                <li> <strong>Harga barang</strong> <a href="./audio/hargabarang.mp3" class="sm2_button"></a><br> Jika harga makin tinggi maka permintaan makin rendah dan begitu sebaliknya jika harga barang rendah maka permintaan akan barang tersebut makin tinggi.</li>
+                <li> <strong>Pendapatan masyarakat</strong> <a href="./audio/pendapatan masyarakat.mp3" class="sm2_button"></a><br> Makin tinggi pendapatan seseorang maka makin besar daya beli yang ia miliki, sehingga permintaan akan barang dan jasa pun meningkat, dan begitu sebaliknya jika orang berpenghasilan rendah maka pemintaan akan barang dan jasa pun akan menurun. </li>
+                <li> <strong>Selera masyarakat</strong>  <a href="./audio/seleramasyarakat.mp3" class="sm2_button"></a><br> Jika selera masyarakat meningkat maka permintaan pun meningkat pula, dan sebaliknya. Selera masyarakat sering disebut mode atau tren</li>
+                <li> <strong>Kualitas barang </strong>  <a href="./audio/kualitas-barang.mp3" class="sm2_button"></a><br> Makin tinggi kualitas suatu barang maka keinginan (permintaan) orang untuk dapat memiliki barang tersebut makin besar.</li>
+                <li> <strong>Harga barang lain yang berkaitan </strong>  <a href="./audio/barangberkaitan.mp3" class="sm2_button"></a><br> Harga barang lain yang dimaksud ini adalah barang substitusi. Yaitu barang pengganti yang sama fungsinya dengan barang yang dibutuhkan.</li>
+                <li> <strong>Waktu </strong> <a href="./audio/waktu.mp3" class="sm2_button"></a><br> Pada waktu-waktu tertentu permintaan terhadap barang dan jasa bisa meningkat dari pada hari-hari bisa, seperti pada saat lebaran atau hari-hari besar/istimewa yang lain.</li>
+                <li> <strong>Jumlah penduduk </strong> <a href="./audio/jumlah penduduk.mp3" class="sm2_button"></a><br> Makin besar jumlah penduduk maka makin besar pula permintaan terhadap barang dan jasa, dan sebaliknya.</li>
+                <li> <strong>Kejadian yang akan datang </strong>  <a href="./audio/kejadian.mp3" class="sm2_button"></a><br> Isu sering kali dikembangkan untuk mempengaruhi permintaan agar dapat meningkat, seperti adanya berita tentang kenaikan BBM, kenaikan sembako dll.</li>
+                <li> <strong>Faktor lain (Harapan, hubungan sosial dan politik) </strong>  <a href="./audio/faktorlain.mp3" class="sm2_button"></a><br> Harapan massa, pengaruh hubungan sosial dan keadaan politik pada saat stabil mengarah pada kemakmuran sehingga masyarakat mampu meningkatkan pendapatan yang pada akhirnya mendorong peningkatan permintaan akan barang dan jasa.</li>
             </ul>
+            <h3>Faktor yang mempengaruhi permintaan</h3>
+            <ul>
+              <li>Harga barang dan jasa.</li>
+              <li>Harga input atau biaya produksi.</li>
+              <li>Teknologi produksi.</li>
+              <li>Keuntungan yang diinginkan oleh produsen.</li>
+              <li>Banyaknya penjual atau pesaing.</li>
+            </ul>
+        </div>
+    </section>
+    <div class="border-boundary clear"></div>
+    <section id="second-interactive" data-type="background" class="jenis-permintaan">
+        <div class="container">
+            <h2>Hukum permintaan dan penawaran</h2>
+            <div class="container">
+                <div class="excessive-email">
+                    <h2>Hukum permintaan</h2>
+                    <p>Dalam hukum permintaan, dikatakan bahwa <a href="./audio/hukum permintaan.mp3" class="sm2_button"></a>. Hukum yang berlaku dalam ilmu ekonomi tidaklah berlaku mutlak tetapi bersifat ceteris paribus. Faktor penyebab tidak berlakunya hukum permintaan yaitu: </p>
+
+                    <ul>
+                      <li>Permintaan barang-barang bernilai prestise</li>
+                      <li>Harapan harga suatu barang akan berubah</li>
+                      <li>Hubungan kuantitas harga</li>
+                      <li>Barang inferior</li>
+                    </ul>
+                </div>
+                <div class="excessive-meetings">
+                    <h2> Hukum Penawaran</h2>
+                    <p>Hukum penawaran menyatakan semkain tinggi harga suatu barang semakin banyak jumlah barang yang dibutuhkan, semakin rendah harga suatu barang semakin sedikit jumlah barang yang ditawarkan. Hukum penawaran juga bersifat ceteris paribus. Hal ini menunjukkan hubungan yang positif antara harga barang atau jasa dengan kuantitas yang ditawarkan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="sound-familiar">
+        <div class="container">
+            <h1>Faktor-faktor yang mempengaruhi permintaan antara lain</h1>
+            <ul>
+              <li><strong>Banyaknya/intensitas kebutuhan konsumen</strong><br>Ketika flu burung dan flu babi sedang menggila, produk masker pelindung akan sangat laris. Pada bulan puasa (ramadhan) permintaan belewah, timun suri, cincau, sirup, es batu kurma, dan lain sebagainya akan sangat tinggi dibandingkan bulan lainnya.</li>
+              <li><strong>Tujuan Perusahaan</strong><br>Perusahaan yang bertujuan mencari keuntungan sebesar-besarnya (profit oriented) akan menjual produknya dengan marjin keuntungan yang besar sehingga harga jual jadi tinggi. Jika perusahaan ingin produknya laris dan menguasai pasar maka perusahaan menetapkan harga yang rendah dengan tingkat keuntungan yang rendah sehingga harga jual akan rendah untuk menarik minat konsumen. • Pajak Pajak yang naik akan menyebabkan harga jual jadi lebih tinggi sehingga perusahan menawarkan lebih sedikit produk akibat permintaan konsumen yang turun.</li>
+              <li><strong>Ketersediaan dan harga barang pengganti/pelengkap</strong><br>Jika ada produk pesaing sejenis di pasar dengan harga yang murah maka konsumen akan ada yang beralih ke produk yang lebih murah sehingga terjadi penurunan permintaan, akhirnya penawaran pun dikurangi.</li>
+              <li><strong>Prediksi / perkiraan harga di masa depan</strong><br>Ketika harga jual akan naik di masa mendatang perusahaan akan mempersiapkan diri dengan memperbanyak output produksi dengan harapan bisa menawarkan/menjual lebih banyak ketika harga naik akibat berbagai faktor. </li>
+              <li><strong>Munculnya penjual baru</strong><br>Setiap saat akan muncul perusahaan (produsen/penjual baru) yang menyebabkan penawaran akan barang dan jasa kepada konsumen semakin luas</li>
+              <li><strong>Teknologi yang digunakan</strong><br>Dengan adanya teknologi canggih bisa menyebabkan pemangkasan biaya produksi sehingga memicu penurunan harga.</li>
+            </ul>
+            <p>Titik Harga Jeruk Jumlah Barang yang Ditawar A Rp4.500,00 50 kg B Rp4.750,00 60 kg C Rp5.000,00 70 kg D Rp5.250,00 80 kg E Rp5.500,00 90 kg F Rp5.750,00 100 kg G Rp6.000,00 110 kg</p>
+            <p>Titik Harga Jeruk Jumlah Barang yang Ditawar Jumlah Barang yang Diminta A Rp4.500,00 50 kg 140 kg B Rp4.750,00 60 kg 120 kg C Rp5.000,00 70 kg 100 kg D Rp5.250,00 80 kg 80 kg E Rp5.500,00 90 kg 60 kg F Rp5.750,00 100 kg 40 kg G Rp6.000,00 110 kg 20 kg</p>
+            <p>Jika harga suatu barang atau jasa naik, maka jumlah barang atau jasa yang diminta akan turun. Sebaliknya, jika harga suatu barang atau jasa turun, maka jumlah barang atau jasa yang diminta akan naik.</p>
+            <p>Suatu contoh penerapannya dalam masyarakat adalah ketika harga suatu barang, misalnya 1 Kg apel malang biasanya dijual seharga Rp 15.000,00, tetapi karena kelangkaan bibit, penjual menaikkan harga 1 Kg buah apel malang menjadi Rp 30.000,00. untuk mendapatkan keuntungan, karena kenaikan yang signifikan tersebut pembeli cenderung membeli bSuah apel dengan jenis lain atau beralih membeli buah – buahan yang lain.</p>
+        </div>
+    </section>
+    <section id="second-interactive" data-type="background" class="jenis-permintaan">
+        <div class="container">
+            <h2>Penawaran</h2>
+            <div class="container">
+
+                <div class="excessive-email">
+                    <h2>Pengertian Penawaran</h2>
+                    <p>Penawaran adalah sejumlah barang atau jasa yang ditawarkan oleh penjual pada berbagai tingkat harga dan dalam waktu tertentu. </p>
+                    <h2>Jenis-jenis Penawaran</h2>
+                    <ul>
+                      <li>Penawaran individu adalah penawaran yang dilakuakn oleh satu orang penjual dan atau produsen .</li>
+                      <li>Penawaran pasar adalah penjumlahan dari penawaran individu.</li>
+                    </ul>
+                </div>
+                <div class="excessive-meetings">
+                    <h2>Jenis-jenis permintaan</h2>
+                    <h4>a.Berdasarkan daya beli</h4>
+                    <ul>
+                      <li>Permintaan efektif, yaitu permintaan terhadap barang atau jasa yang disertai daya beli dan melakukan transaksi. </li>
+                      <li>Permintaan potensial, yaitu permintaan terhadap barang atua jasa yang disertai daya beli tetapi konsumen masih mempertimbangkan transaksinya (belum dilakukan transaksi) </li>
+                      <li>Permintaan absolute, yaitu permintaan terhadap barang/jasa yang tidak disertai daya beli.</li>
+                    </ul>
+                    <h4>b.Berdasarkan jumlah yang melakukan permintaan</h4>
+                    <ul>
+                      <li>Permintaan individu adalah permintaan seseorang terhadap barang/jasa untuk memenuhi kebutuhan hidupnya.</li>
+                      <li>Permintaan kelompok adalah permintaan dari sekelompok orang atau masyarakat pada saat yang bersamaan (penjumlahan permintaan individu)</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </section>
     <div class="clear"></div>
