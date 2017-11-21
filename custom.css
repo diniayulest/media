@@ -90,3 +90,53 @@ h4 {
 #big-head p {
     margin-bottom: 20px;
 }
+
+
+.tabs {
+  display: block;
+  list-style: none;
+  text-align: right;
+  margin-bottom: 50px;
+}
+.tabs li {
+  display: inline-block;
+  border-top: 5px solid transparent;
+  margin: 0 10px;
+  padding: 0 8px;
+  padding-top: 23px;
+  text-transform: uppercase;
+  font-size: 15px;
+  cursor: pointer;
+}
+.tabs li.active, .tabs li:hover {
+  border-color: #ffc700;
+}
+.tabs:hover li.active {
+  border-color: transparent;
+}
+.tabs:hover li.active:hover {
+  border-color: #ffc700;
+}
+#intro .container {
+  margin-top: 0;
+}
+.tabs li a {
+  text-decoration: none;
+  color: #333;
+}
+
+
+.test-float {
+  display: inline-block;
+  text-decoration: none;
+  position: fixed;
+  bottom: 0;
+  right: 20px;
+  background: #00c4ff;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 13px 40px;
+  z-index: 10000;
+}
