@@ -140,3 +140,73 @@ h4 {
   padding: 13px 40px;
   z-index: 10000;
 }
+
+.guru-image img {
+    max-width: 250px;
+}
+
+.guru-bubble {
+    background: #fec62e;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    padding: 0 20px;
+    align-items: center;
+    box-sizing: border-box;
+    margin-left: 40px;
+}
+
+.guru-bubble .title {
+    line-height: 1;
+    width: 80%;
+    color: #fff;
+    font-size: 18px;
+}
+
+.guru {
+    position: relative;
+    padding-top: 30px;
+}
+
+.guru .container {
+    display: flex;
+    justify-content: center;
+}
+
+#fifth-interactive .container > h2 {
+    font-size: 60px;
+    margin: 0;
+}
+
+#fifth-interactive .container > h3 {
+    font-size: 40px;
+    font-family: 'StandardCT-ExtraBold', Helvetica, Arial, sans-serif;
+    margin: 30px 0 20px;
+}
+
+p {
+    font-size: 25px;
+}
+
+img {
+  max-width: 100%;
+}
+
+#second-interactive .container .container h2 {
+    margin-bottom: 30px;
+}
+
+section.jenis-permintaan .container > div {
+    width: 90%;
+}
+
+#sound-familiar h1 {
+    margin: 0;
+    margin-bottom: 30px;
+}
+
+#sound-familiar {
+    padding: 60px 0;
+}
