@@ -210,3 +210,7 @@ section.jenis-permintaan .container > div {
 #sound-familiar {
     padding: 60px 0;
 }
+
+.excessive-email, .excessive-meetings, .excessive-interruptions {
+    text-align: justify;
+}
