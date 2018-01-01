@@ -1,0 +1,276 @@
+
+<html lang="en" data-livestyle-extension="available">
+
+<head>
+    <title>Permintaan, Penawaran dan Harga Keseimbangan Pasar</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=0.5">
+    <link rel="stylesheet" href="./aos/aos.css">
+    <link rel="stylesheet" href="./font.css">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./custom.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <!--[if lt IE 9]> <script src="/docroot/wac/resources/wac/js/landing/time-wasters/html5shiv.js"></script> <![endif]-->
+    <link rel="stylesheet" type="text/css" href="./mp3-player-button.css" />
+    <script type="text/javascript" src="./soundmanager2.js"></script>
+    <script src="./aos/aos.js"></script>
+    <script type="text/javascript" src="./mp3-player-button.js"></script>
+    <script>
+    soundManager.setup({
+      // required: path to directory containing SM2 SWF files
+      url: './swf/'
+    });
+    </script>
+    <script>
+      jQuery(document).ready(function() {
+        AOS.init();
+      })
+    </script>
+    <script>
+        (function($) {
+            function incrementer(ct, increment) {
+                return function() {
+                    ct += increment;
+                    return ct;
+                };
+            }
+
+            function pad2(number) {
+                return (number < 10 ? '0' : '') + number;
+            }
+
+            function defaultFormatMilliseconds(millis) {
+                var x, seconds, minutes, hours;
+                x = millis / 1000;
+                seconds = Math.floor(x % 60);
+                x /= 60;
+                minutes = Math.floor(x % 60);
+                x /= 60;
+                hours = Math.floor(x % 24);
+                x /= 24;
+                var hour = pad2(hours);
+                var min = pad2(minutes);
+                if (hour.charAt(0) == '0') {
+                    var newHour = hour.substr(1);
+                } else {
+                    var newHour = hour;
+                }
+                if (min.charAt(0) == '0') {
+                    var newMin = min.substr(1);
+                } else {
+                    var newMin = min;
+                }
+                if (newHour == '0') {
+                    return [newMin + ' min', pad2(seconds) + ' sec'].join(' : ');
+                } else {
+                    return [newHour + ' hr', newMin + ' min', pad2(seconds) + ' sec'].join(' : ');
+                }
+            }
+
+            function formatMilliseconds(millis, data) {
+                var formatter;
+                if (typeof jintervals == 'function') {
+                    formatter = function(millis, data) {
+                        return jintervals(millis / 1000, data.format);
+                    };
+                } else {
+                    formatter = defaultFormatMilliseconds;
+                }
+                formatMilliseconds = function(millis, data) {
+                    return formatter(millis, data);
+                };
+                return formatMilliseconds(millis, data);
+            }
+            var methods = {
+                init: function(options) {
+                    var defaults = {
+                        updateInterval: 1000,
+                        startTime: 0,
+                        format: '{MM} min : {SS} sec',
+                        formatter: formatMilliseconds
+                    };
+                    var settings = $.extend({}, defaults, options);
+                    return this.each(function() {
+                        var $this = $(this),
+                            data = $this.data('stopwatch');
+                        if (!data) {
+                            data = settings;
+                            data.active = false;
+                            data.target = $this;
+                            data.elapsed = settings.startTime;
+                            data.incrementer = incrementer(data.startTime, data.updateInterval);
+                            data.tick_function = function() {
+                                var millis = data.incrementer();
+                                data.elapsed = millis;
+                                data.target.trigger('tick.stopwatch', [millis]);
+                                data.target.stopwatch('render');
+                            };
+                            $this.data('stopwatch', data);
+                        }
+                    });
+                },
+                start: function() {
+                    return this.each(function() {
+                        var $this = $(this),
+                            data = $this.data('stopwatch');
+                        data.active = true;
+                        data.timerID = setInterval(data.tick_function, data.updateInterval);
+                        $this.data('stopwatch', data);
+                    });
+                },
+                stop: function() {
+                    return this.each(function() {
+                        var $this = $(this),
+                            data = $this.data('stopwatch');
+                        clearInterval(data.timerID);
+                        data.active = false;
+                        $this.data('stopwatch', data);
+                    });
+                },
+                destroy: function() {
+                    return this.each(function() {
+                        var $this = $(this),
+                            data = $this.data('stopwatch');
+                        $this.stopwatch('stop').unbind('.stopwatch').removeData('stopwatch');
+                    });
+                },
+                render: function() {
+                    var $this = $(this),
+                        data = $this.data('stopwatch');
+                    $this.html(data.formatter(data.elapsed, data));
+                },
+                getTime: function() {
+                    var $this = $(this),
+                        data = $this.data('stopwatch');
+                    return data.elapsed;
+                },
+                toggle: function() {
+                    return this.each(function() {
+                        var $this = $(this);
+                        var data = $this.data('stopwatch');
+                        if (data.active) {
+                            $this.stopwatch('stop');
+                        } else {
+                            $this.stopwatch('start');
+                        }
+                    });
+                },
+                reset: function() {
+                    return this.each(function() {
+                        var $this = $(this);
+                        data = $this.data('stopwatch');
+                        data.incrementer = incrementer(data.startTime, data.updateInterval);
+                        data.elapsed = data.startTime;
+                        $this.data('stopwatch', data);
+                    });
+                }
+            };
+            $.fn.stopwatch = function(method) {
+                if (methods[method]) {
+                    return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
+                } else if (typeof method === 'object' || !method) {
+                    return methods.init.apply(this, arguments);
+                } else {
+                    $.error('Method ' + method + ' does not exist on jQuery.stopwatch');
+                }
+            };
+        })(jQuery);
+    </script>
+    <script>
+        /** * Parallax Scrolling Tutorial * For Smashing Magazine * July 2011 * * Author: Richard Shepherd * www.richardshepherd.com * @richardshepherd */
+        $(document).ready(function() {
+            $window = $(window);
+            if (!((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPad/i)))) {
+                $('[data-type]').each(function() {
+                    $(this).data('offsetY', parseInt($(this).attr('data-offsetY')));
+                    $(this).data('Xposition', $(this).attr('data-Xposition'));
+                    $(this).data('speed', $(this).attr('data-speed'));
+                });
+                $('section[data-type="background"]').each(function() {
+                    var $self = $(this),
+                        offsetCoords = $self.offset(),
+                        topOffset = offsetCoords.top;
+                    $(window).scroll(function() {
+                        if (($window.scrollTop() + $window.height()) > (topOffset) && ((topOffset + $self.height()) > $window.scrollTop())) {
+                            var yPos = -($window.scrollTop() / $self.data('speed'));
+                            if ($self.data('offsetY')) {
+                                yPos += $self.data('offsetY');
+                            }
+                            var coords = '50% ' + yPos + 'px';
+                            $self.css({
+                                backgroundPosition: coords
+                            });
+                            $('[data-type="sprite"]', $self).each(function() {
+                                var $sprite = $(this);
+                                var yPos = -($window.scrollTop() / $sprite.data('speed'));
+                                var coords = $sprite.data('Xposition') + ' ' + (yPos + $sprite.data('offsetY')) + 'px';
+                                $sprite.css({
+                                    backgroundPosition: coords
+                                });
+                            });
+                            $('[data-type="video"]', $self).each(function() {
+                                var $video = $(this);
+                                var yPos = -($window.scrollTop() / $video.data('speed'));
+                                var coords = (yPos + $video.data('offsetY')) + 'px';
+                                $video.css({
+                                    top: coords
+                                });
+                            });
+                        };
+                    });
+                });
+            }
+            $('#stopwatch').stopwatch().stopwatch('start');
+            $('#email input[type=text]').focus(function() {
+                if ($(this).val() == 'email address') {
+                    $(this).val('');
+                }
+            });
+            $('#email input[type=text]').blur(function() {
+                if ($(this).val() == '') {
+                    $(this).val('email address');
+                }
+            });
+            $('#view-sources').toggle(function() {
+                $('.sources').show();
+            }, function() {
+                $('.sources').hide();
+            });
+        });
+    </script>
+</head>
+
+<body id="waste-time">
+    <a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSeD7LIxA9Ej5m3ZxvwYlbLkv_knfg6WiCcrBcREHG-2-7iAcQ/viewform" class="test-float">Test</a>
+    <section id="sound-familiar">
+        <div class="container">
+            <ul class="tabs">
+              <li>
+                <a href="./">Home</a>
+              </li>
+              <li class="active">
+                <a href="#">About</a>
+              </li>
+            </ul>
+            <div class="rowz">
+            <div class="colz">
+              <h1 data-aos="fade-up">Tentang Media</h1>
+              <p data-aos="fade-up">Media digital storytelling berbasis website merupakan produk yang berupa media pembelajaran yang dikembangkan oleh Mahasiswa Magister Pendidikan Ekonomi. Produk ini dikembangkan pada kelas X IPS di SMA Negeri 5 Tanjung Jabung Timur, Provinsi Jambi.</p>
+              <p data-aos="fade-up">Media digital storytelling berbasis website adalah media pembelajaran yang dikembangkan oleh peneliti untuk membantu proses pembelajaran ekonomi, khususnya pada materi Permintaan, Penawaran dan Keseimbangan Pasar.</p>
+              <p data-aos="fade-up">
+  Media ini, berisikan teks, suara, video dan gambar yang mendukung guru untuk mentransfer pemahaman materi Permintaan, Penawaran dan Keseimbangan Pasar, agar materi pembelajaran tidak lagi menjadi hal yang membosankan untuk dipelajari.</p>
+            </div>
+            <div class="colz">
+              <h1 data-aos="fade-up">Tentang Peneliti</h1>
+              <div class="isola" data-aos="fade-up">
+                <img src="./IMG_4967.jpg" alt="">
+                <p>Dini Ayu Lestari adalah mahasiswa Magister Pendidikan Ekonomi di Universitas Sebelas Maret Surakarta yang sedang menyelesaikan studi, ia meneliti dan mengembangkan sebuah produk berupa Media Pembelajaran Digital Storytelling berbasis website untuk mata pelajaran ekonomi.</p>
+              </div>
+            </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

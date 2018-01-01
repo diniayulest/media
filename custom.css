@@ -214,3 +214,33 @@ section.jenis-permintaan .container > div {
 .excessive-email, .excessive-meetings, .excessive-interruptions {
     text-align: justify;
 }
+
+.colz {
+    width: 50%;
+    float: left;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-sizing: border-box;
+}
+
+#sound-familiar .colz h1 {
+    font-size: 42px;
+}
+
+#sound-familiar .colz p {
+    font-size: 21px;
+    line-height: 1.5;
+}
+
+.rowz {
+    margin-bottom: 30px;
+    overflow: hidden;
+}
+
+.isola img {
+    max-width: 140px;
+    border-radius: 50%;
+    margin: 0 auto;
+    display: block;
+    margin-bottom: 20px;
+}
